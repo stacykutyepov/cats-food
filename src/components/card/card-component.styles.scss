@@ -1,0 +1,116 @@
+$blue: #1698d9;
+$pink: #e52e7a;
+$grey: #666666;
+$black: #000000;
+
+@mixin card-border($color) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 480px;
+  width: 320px;
+  background-color: white;
+  background: linear-gradient(135deg, transparent 30px, $color 20px);
+  border-radius: 12px;
+}
+
+.card-one-container {
+  display: flex;
+  flex-direction: column;
+  height: 509px;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 472px;
+  width: 312px;
+  background-color: #f2f2f2;
+  background: linear-gradient(135deg, transparent 30px, white 20px);
+  border-radius: 12px;
+  font-family: "Trebuchet";
+
+  .text-container {
+    margin-left: 51px;
+    margin-top: 21px;
+    letter-spacing: 0;
+    color: $black;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .card-top-text {
+      padding-bottom: 5px;
+      color: $grey;
+      font-size: 16px;
+      line-height: 19px;
+    }
+    .card-title {
+      font-size: 48px;
+      font-weight: bold;
+      line-height: 56px;
+    }
+    .card-taste {
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 28px;
+      padding-bottom: 15px;
+    }
+    .card-description {
+      font-size: 14px;
+      line-height: 16px;
+      color: $grey;
+    }
+  }
+
+  .image-container {
+    height: 57%;
+
+    .image-cat {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.oval {
+  align-self: flex-end;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  bottom: 96px;
+  right: 16px;
+  min-height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background-color: #1698d9;
+
+  .weight-number {
+    font-size: 42px;
+    line-height: 36px;
+  }
+
+  .weight {
+    font-size: 21px;
+    line-height: 22px;
+  }
+}
+
+.action-text {
+  font-size: 13px;
+  line-height: 15px;
+  position: relative;
+  bottom: 72px;
+
+  .buy-action {
+    color: $blue;
+    border-bottom: 1px dotted;
+  }
+}
+
+.border-blue {
+  @include card-border($blue);
+}

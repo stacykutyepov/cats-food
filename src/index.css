@@ -3,6 +3,12 @@
   src: local("Trebuchet"), url("./fonts/trebuc.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "SF Dispalay Regular";
+  src: local("SF Display Regular"),
+    url("./fonts/SF-Display-Regular.ttf") format("truetype");
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

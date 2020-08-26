@@ -1,21 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
 import "./card-component.styles.scss";
 import catPicture from "../../assets/cat-photo.png";
 
-const Card = () => {
+const Card = ({
+  topText,
+  title,
+  flavour,
+  portions,
+  gift,
+  satisfaction,
+  additionalInfo,
+  weight,
+  availability,
+}) => {
+  const [isSelected, setSelect] = useState(false);
+  const [isMouseLeave, setMouseLeave] = useState(false);
+
+  const onSetSelected = () => {
+    if (availability) {
+      setSelect(!isSelected);
+      setMouseLeave(false);
+    }
+  };
+
+  const onSetMouseLeave = () => {
+    if (isSelected && !isMouseLeave) {
+      setMouseLeave(true);
+    }
+  };
+
   return (
-    <div className="card-one-container">
-      <div className="border-blue">
+    <div className="card-one-container" onMouseLeave={onSetMouseLeave}>
+      <div
+        className={
+          isSelected
+            ? "border-pink"
+            : availability
+            ? "border-blue"
+            : "border-grey"
+        }
+        onClick={onSetSelected}
+      >
         <div className="card-container">
-          <div className="text-container">
-            <span className="card-top-text">Сказочное заморское яство</span>
-            <span className="card-title">Title</span>
-            <span className="card-taste">Title</span>
-            <span className="card-description">Description</span>
-            <span className="card-description">Description</span>
-            <span className="card-description">Description</span>
+          <div
+            className={`text-container ${availability ? "" : "not-available"}`}
+          >
+            <span
+              className={`card-top-text ${
+                isMouseLeave && isSelected ? "text-pink" : ""
+              }`}
+            >
+              {isMouseLeave && isSelected ? "Котэ не одобряет?" : topText}
+            </span>
+            <span className="card-title">{title}</span>
+            <span className="card-taste">{flavour}</span>
+            <span className="card-description">{portions} порций</span>
+            <span className="card-description">{gift}</span>
+            <span className="card-description">{satisfaction}</span>
           </div>
-          <div className="image-container">
+          <div
+            className={`image-container ${availability ? "" : "not-available"}`}
+          >
             <img
               className="image-cat"
               src={catPicture}
@@ -24,13 +69,28 @@ const Card = () => {
           </div>
         </div>
       </div>
-      <div className="oval">
-        <span className="weight-number">0,5</span>
+      <div
+        className={`oval ${availability ? "blue" : "not-available grey"} ${
+          isSelected ? "pink" : ""
+        }`}
+      >
+        <span className="weight-number">{weight}</span>
         <span className="weight">kg</span>
       </div>
-      <span className="action-text">
-        Чего сидишь? Порадуй котэ, <span className="buy-action">купи.</span>
-      </span>
+      {availability ? (
+        isSelected ? (
+          <span className="action-text">{additionalInfo}</span>
+        ) : (
+          <span className="action-text">
+            Чего сидишь? Порадуй котэ,
+            <span className="buy-action" onClick={onSetSelected}>
+              купи.
+            </span>
+          </span>
+        )
+      ) : (
+        <span className="action-finished">Печалька, {flavour} закончился.</span>
+      )}
     </div>
   );
 };

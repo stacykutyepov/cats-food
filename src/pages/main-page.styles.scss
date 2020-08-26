@@ -3,10 +3,8 @@
   flex-direction: column;
   text-align: center;
   justify-content: center;
-
-  width: 100vw;
-  height: 100vh;
-  border: 1px solid red;
+  min-width: 100%;
+  min-height: 100vh;
   color: white;
   background: linear-gradient(
     180deg,
@@ -16,15 +14,33 @@
   );
 
   .page-title {
+    font-family: "SF Dispalay Regular";
+    font-weight: normal;
     font-size: 36px;
     line-height: 43px;
-    text-shadow: 0 1px 1px 0 #000000;
     letter-spacing: 0;
   }
 
   .cards-container {
+    align-self: center;
     margin: 24px 60px 0px 60px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 1424px) {
+  .main-page {
+    padding-bottom: 60px;
+    .cards-container {
+      display: flex;
+      align-self: center;
+      justify-content: center;
+    }
+    .page-title {
+      margin-top: 60px;
+      padding: 0 20px;
+    }
   }
 }
